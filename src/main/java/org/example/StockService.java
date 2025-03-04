@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 @Service
 @Lazy
+
 public class StockService extends StockRepository{
     StockService() {
         super();

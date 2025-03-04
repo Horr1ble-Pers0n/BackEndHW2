@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
+@Lazy
 @Repository
 
 public class StockRepository {
@@ -12,11 +13,11 @@ public class StockRepository {
 
     public StockRepository(ArrayList<Item> items) {
         this.Items = items;
-        System.out.println("Stock Repository Created");
+        System.out.println("Populated Stock Repository Created");
     }
 
     public StockRepository() {
         this.Items = new ArrayList<>();
-        System.out.println("Stock Repository Created");
+        System.out.println("Empty Stock Repository Created");
     }
 }
