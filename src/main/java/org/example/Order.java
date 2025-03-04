@@ -1,20 +1,25 @@
 package org.example;
 
 
+import java.util.ArrayList;
 
 public class Order {
     private String orderId;
     private String status;
-    private String stockId;
-    private int quantity;
-    private double price;
+    private ArrayList<Item> Items;
+    private SingletonTax Tax;
+    private final double totalPrice;
 
-    public Order(String orderId, String status, String stockId, int quantity) {
+    public Order(String orderId, String status, ArrayList<Item> Items, SingletonTax Tax) {
         this.orderId = orderId;
         this.status = status;
-        this.stockId = stockId;
-        this.quantity = quantity;
-        this.price = price;
+        this.Items = Items;
+        this.Tax = Tax;
+        int price = 0;
+        for (Item item : Items) {
+            price += item.getPrice();
+        }
+        this.totalPrice = price*Tax.getTax();
     }
     public String getOrderId() {
         return orderId;
@@ -22,33 +27,20 @@ public class Order {
     public String getStatus() {
         return status;
     }
-    public String getStockId() {
-        return stockId;
-    }
-    public int getQuantity() {
-        return quantity;
-    }
-    public double getPrice() {
-        return price;
+    public ArrayList<Item> getItems() {
+        return Items;
     }
 
     public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
-
     public void setStatus(String status) {
         this.status = status;
     }
-
-    public void setStockId(String stockId) {
-        this.stockId = stockId;
+    public void setItems(ArrayList<Item> items) {
+        Items = items;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+
 }

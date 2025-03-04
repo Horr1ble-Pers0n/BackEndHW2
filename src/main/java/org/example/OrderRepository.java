@@ -1,22 +1,30 @@
 package org.example;
 
 import org.springframework.stereotype.Repository;
+import java.util.ArrayList;
 
 @Repository
 public class OrderRepository {
+
+    private ArrayList<Order> orders;
+
     public OrderRepository() {
-        System.out.println("OrderRepository Created");
+        this.orders = new ArrayList<>();
+        System.out.println("Order Repository Created");
     }
 
-    public void svOrder(String orderId, String Status) {
-        System.out.println("Order " + orderId + " saved to database. Status: " + Status);
+    public void svOrder(Order order) {
+        orders.add(order);
+        System.out.println("Order " + order.getOrderId() + " saved to database. Status: " + order.getStatus());
     }
-    public void rmOrder(String orderId) {
-        System.out.println("Order " + orderId + " removed from database.");
+    public void rmOrder(Order order) {
+        orders.remove(order);
+        System.out.println("Order " + order.getOrderId() + " removed from database.");
     }
 
-    public void chStatus(String orderId , String Status) {
-        System.out.println("Order " + orderId + " changed status to " + Status);
+    public void chStatus(Order order, String Status) {
+        order.setStatus(Status);
+        System.out.println("Order " + order.getOrderId() + " changed status to " + Status);
     }
 
 
