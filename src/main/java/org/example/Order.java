@@ -7,12 +7,14 @@ public class Order {
     private String status;
     private String stockId;
     private int quantity;
+    private double price;
 
     public Order(String orderId, String status, String stockId, int quantity) {
         this.orderId = orderId;
         this.status = status;
         this.stockId = stockId;
         this.quantity = quantity;
+        this.price = price;
     }
     public String getOrderId() {
         return orderId;
@@ -26,7 +28,9 @@ public class Order {
     public int getQuantity() {
         return quantity;
     }
-    
+    public double getPrice() {
+        return price;
+    }
 
     public void setOrderId(String orderId) {
         this.orderId = orderId;
@@ -42,5 +46,9 @@ public class Order {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

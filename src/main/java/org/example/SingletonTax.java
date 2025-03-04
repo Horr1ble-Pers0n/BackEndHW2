@@ -3,19 +3,16 @@ package org.example;
 public class SingletonTax {
     private static SingletonTax instance;
 
-    private int tax;
+    private double tax;
 
     private SingletonTax() {
-        this.tax = 20;
+        this.tax = 1.2;
     }
 
-    public int getTax() {
+    public double getTax() {
         return tax;
     }
 
-    public void setTax(int tax) {
-        this.tax = tax;
-    }
 
     public static SingletonTax getInstance() {
         if (instance == null) {
