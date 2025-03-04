@@ -30,10 +30,20 @@ public class StockService extends StockRepository{
         return Items;
     }
 
+    public Item getItem(String id){
+        for (var item : this.getItems()){
+            if( item.getId().equals(id)){
+                return item;
+            }
+        }
+        return null;
+    }
+
     public void printStock(){
         System.out.println("Items in stock:");
         for (var item : this.getItems()){
             System.out.println(item.getName() + " " + item.getAmount());
+
         }
 
     }

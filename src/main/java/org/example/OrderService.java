@@ -36,8 +36,31 @@ public class OrderService extends OrderRepository{
         System.out.println("Order " + order.getOrderId() + " changed status to " + Status);
     }
 
+    public void makeOrder(Order order, StockService repo){
+        this.svOrder(order);
+        for( var item : order.getItems()){
+            if(repo.getItem(item.getId()) != null) {
+                Item item_repo = repo.getItem(item.getId());
+                if( item_repo.getAmount() >= item.getAmount() ){
+                    order.addItem(item);
+                }
+                else{
+                    this.chStatus(order, "Pending delivery");
+                    return;
+                }
+            }
+            else{
+                this.chStatus(order, "Pending delivery");
+                return;
+            }
+            for (var i : order.getItems()) {
+                for (var j : repo.getItems()) {
+                    j.setAmount(j.getAmount() - i.getAmount());
+                }
 
-    public void makeOrder(Order order, StockRepository StockRepository){
+            }
+            this.chStatus(order,"Completed");
 
+        }
     }
 }

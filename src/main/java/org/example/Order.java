@@ -30,6 +30,9 @@ public class Order {
     public ArrayList<Item> getItems() {
         return Items;
     }
+    public double getTotalPrice() {
+        return totalPrice;
+    }
 
     public void setOrderId(String orderId) {
         this.orderId = orderId;
@@ -40,7 +43,8 @@ public class Order {
     public void setItems(ArrayList<Item> items) {
         Items = items;
     }
-
-
+    public void addItem(Item item){
+        Items.add(item);
+    }
 
 }

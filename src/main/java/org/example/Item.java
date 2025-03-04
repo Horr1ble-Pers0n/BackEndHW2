@@ -25,4 +25,7 @@ public class Item {
     public int getPrice() {
         return price;
     }
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 }
